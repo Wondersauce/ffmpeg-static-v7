@@ -1,3 +1,3 @@
-const ffmpegPath = require("./ffmpegPath/ffmpegPath");
+const ffmpegPath = require("./ffmpegPath/ffmpegPath").default;
 
 export default ffmpegPath;
