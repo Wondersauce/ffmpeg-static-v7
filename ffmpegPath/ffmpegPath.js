@@ -27,4 +27,4 @@ function getFFmpegPath() {
 
 const ffmpegPath = getFFmpegPath();
 
-export default ffmpegPath;
+module.exports = ffmpegPath;
