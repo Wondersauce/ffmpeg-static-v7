@@ -1,20 +1,22 @@
 const os = require("os");
 const path = require("path");
 
+const basePath = path.resolve(__dirname, "./ffmpegPath");
+
 function getFFmpegPath() {
   const platform = os.platform();
   const arch = os.arch();
   let ffmpegPath = 'ffmpeg';
 
   if (platform === "win32") {
-    ffmpegPath = path.resolve("./ffmpegPath", "windows/ffmpeg.exe");
+    ffmpegPath = path.resolve(basePath, "windows/ffmpeg.exe");
   } else if (platform === "darwin") {
-    ffmpegPath = path.resolve("./ffmpegPath", "mac/ffmpeg");
+    ffmpegPath = path.resolve(basePath, "mac/ffmpeg");
   } else if (platform === "linux") {
     if (arch === "x64") {
-      ffmpegPath = path.resolve("./ffmpegPath", "linux/amd64/ffmpeg");
+      ffmpegPath = path.resolve(basePath, "linux/amd64/ffmpeg");
     } else if (arch === "ia32") {
-      ffmpegPath = path.resolve("./ffmpegPath", "linux/i686/ffmpeg");
+      ffmpegPath = path.resolve(basePath, "linux/i686/ffmpeg");
     } else {
       throw new Error(`Error: Ffmpeg unsupported architecture: ${arch}`);
     }
@@ -27,6 +29,6 @@ function getFFmpegPath() {
 
 const ffmpegPath = getFFmpegPath();
 
-console.log({ffmpegPath, __dirname});
+console.log({ffmpegPath, __dirname, cwd: process.cwd()});
 
 module.exports = ffmpegPath;
