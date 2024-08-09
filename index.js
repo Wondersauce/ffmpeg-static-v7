@@ -29,6 +29,4 @@ function getFFmpegPath() {
 
 const ffmpegPath = getFFmpegPath();
 
-console.log({ffmpegPath, __dirname, cwd: process.cwd()});
-
 module.exports = ffmpegPath;
